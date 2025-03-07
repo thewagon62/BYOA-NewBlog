@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/index.html">Home</a></li>
+                <li><a href="/blog/index.html">Blog</a></li>
+                <li><a href="/about.html">About</a></li>
+                <li><a href="/faq.html">FAQ</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article class="content">
+            <h1>Blog Posts</h1>
+<div id="blog-posts">
+  <!-- Blog posts will be dynamically loaded here -->
+</div>
+
+<script>
+fetch('/blog/posts.json')
+  .then(response => response.json())
+  .then(posts => {
+    const blogPostsDiv = document.getElementById('blog-posts');
+    posts.forEach(post => {
+      const article = document.createElement('article');
+      article.className = 'blog-post-preview';
+      article.innerHTML = `
+        <h2><a href="${post.url}">${post.title}</a></h2>
+        <div class="post-meta">
+          <time datetime="${post.date}">${new Date(post.date).toLocaleDateString()}</time>
+        </div>
+        ${post.description ? `<p>${post.description}</p>` : ''}
+      `;
+      blogPostsDiv.appendChild(article);
+    });
+  })
+  .catch(error => console.error('Error loading blog posts:', error));
+</script> 
+        </article>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 My Website. All rights reserved.</p>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>
