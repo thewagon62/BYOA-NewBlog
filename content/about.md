@@ -5,7 +5,7 @@ date: 2024-03-06
 
 # About Me
 
-Welcome to my website! I'm passionate about sharing knowledge and creating valuable content for my readers.
+Welcome to my funky website! I'm passionate about sharing knowledge and creating valuable content for my readers.
 
 ## What I Do
 
